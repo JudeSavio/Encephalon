@@ -1,5 +1,4 @@
 <html>
-
     <head>
         <!--media queries-->
         <title>Contact</title>
@@ -17,12 +16,11 @@
         <!-- Font Awesome Kit -->
         <script src="https://kit.fontawesome.com/6d2d9357ff.js" crossorigin="anonymous"></script>
         <!-- Linking custom CSS file -->
-        <link rel="stylesheet" href="/css/contact.css">
+        <link rel="stylesheet" href="/css/submit.css">
     </head>
-
     <body>
         <!-- Hero Section -->
-        <section id="about">
+        <section id="submit">
 
             <!-- Nav Bar Module -->
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -37,56 +35,36 @@
                                 <a href="/home" class="nav-link active">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">About</a>
+                                <a href="/home" class="nav-link">FAQ</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">FAQ</a>
+                                <a href="/contact" class="nav-link">Contact</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <!-- Contact Container-->
-            <div class="contact-container">
-
-                <!-- Contact Form-->
-                <div class="contact-form">
-
-                    <h2> Get in touch with us . . .</h2>
-
-                    <form id="contact-form" action="/submit" method="POST">
-                        
-                        <!-- Success Message pop up -->
-                        <div id="success-message" style="display: none;">
-                            Thank you for your submission. We are looking into it.
-                          </div>
-
-                        <label for="fname">First Name</label><br>
-                        <input type="text" id="fname" name="firstName" required><br><br>
-                      
-                        <label for="lname">Last Name</label><br>
-                        <input type="text" id="lname" name="lastName" required><br><br>
-                      
-                      
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" name="email" required><br><br>
-                      
-                      
-                        <label for="message">Message</label><br>
-                        <textarea id="message" name="message" rows="5" cols="60" required></textarea><br><br>
-                      
-                        <div class="contact-form-submit">
-                            <input type="submit" id="submit">
-                        </div>
-                        
-                    </form>
-
+            <div class="submit-container">
+                <div class="brain-banner">
+                    <img src="/assets/img/brain-submit.png" alt="Cool looking brain image">
                 </div>
-
+                <div class="submit-text-container">
+                    <h5>Thank you for reaching out to us! 🌟</h5>
+                    <p>
+                        We're thrilled to let you know that we've received your message and our fantastic team is already on it! 🚀
+                        <br><br>
+                        Please sit back, relax, and expect a prompt response from us in no time 🕒 We're excited to assist you with your inquiry and are dedicated to making your experience with us nothing short of amazing! 🌈
+                        <br><br>
+                        In the meantime, if you have any more thoughts or questions, feel free to share them with us. We're here to make your day even brighter! ☀️
+                    </p>
+                    <p>Redirecting in (<span id="countdown">15</span>) seconds or click <a href="/home">here</a></p>
+                </div>
             </div>
-
         </section>
+
+        <!-- Adding in the Handler JS file -->
+        <script src="/js/handler/submit-handler.js"></script>
 
     </body>
 </html>
