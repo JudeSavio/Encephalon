@@ -1,0 +1,95 @@
+<html>
+
+    <head>
+        <!--media queries-->
+        <title>Contact</title>
+        <meta name="author" content="Jude Savio">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- Adding favicon-->
+        <link rel="icon" type="image/png" href="/assets/img/icon.png"/>
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Font Awesome Kit -->
+        <script src="https://kit.fontawesome.com/6d2d9357ff.js" crossorigin="anonymous"></script>
+        <!-- Linking custom CSS file -->
+        <link rel="stylesheet" href="/css/contact.css">
+    </head>
+
+    <body>
+        <!-- Hero Section -->
+        <section id="about">
+
+            <!-- Nav Bar Module -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container" style="color: #00001f;">
+                    <h3>Encephalon.</h3>
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#ToggleMenu" aria-controls="ToggleMenu" aria-expanded="false" aria-label="toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="ToggleMenu">
+                        <ul class="navbar-nav ms-auto" style="text-align: right;">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link active">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Signup</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Contact Container-->
+            <div class="contact-container">
+
+                <!-- Contact Form-->
+                <div class="contact-form">
+
+                    <h2> Get in touch with us . . .</h2>
+
+                    <form id="contact-form" action="/submit" method="POST">
+                        
+                        <!-- Success Message pop up -->
+                        <div id="success-message" style="display: none;">
+                            Thank you for your submission. We are looking into it.
+                          </div>
+
+                        <label for="fname">First Name</label><br>
+                        <input type="text" id="fname" name="firstName" required><br><br>
+                      
+                        <label for="lname">Last Name</label><br>
+                        <input type="text" id="lname" name="lastName" required><br><br>
+                      
+                      
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" required><br><br>
+                      
+                      
+                        <label for="message">Message</label><br>
+                        <textarea id="message" name="message" rows="5" cols="60" required></textarea><br><br>
+                      
+                        <div class="contact-form-submit">
+                            <input type="submit" id="submit">
+                        </div>
+                        
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </body>
+</html>

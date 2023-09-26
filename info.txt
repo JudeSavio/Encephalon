@@ -1,0 +1,16 @@
+background colours 
+
+pale pink -> #FAE8E8
+
+dark brown -> #8A3815
+
+Mail Trap Creds
+
+var transport = nodemailer.createTransport({
+  host: "sandbox.smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "5a4b67c1b7b606",
+    pass: "b6758cef70c73b"
+  }
+});
