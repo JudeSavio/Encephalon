@@ -1,0 +1,91 @@
+*{
+    margin : 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Nav Bar Section */
+
+.navbar{
+    background-color: #FAE8E8;
+    display: fixed;
+    height: 70px;
+    width: 100%;
+}
+
+.navbar h3{
+    font-weight: bold;
+}
+
+
+/* Login Container */
+.submit-container{
+    height: 91.25vh;
+    width: 100%;
+    background-color: #FAE8E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.submit-box{
+    height: 450px;
+    width: 650px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.submit-brain-logo{
+    height: 100%;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8A3815;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.submit-brain-logo img{
+    object-fit: contain;
+}
+
+.submit-text{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #F8F8FF;
+}
+
+.submit-text h4 , button , p {
+    margin: 10px 0px;
+}
+
+.submit-text h4{
+    font-weight: bold;
+}
+
+.submit-text button{
+    width: 90px;
+    height: 50px;
+    background-color: #8A3815;
+    color: white;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.submit-text a {
+    color: #8A3815;
+}

@@ -18,7 +18,7 @@
 }
 
 
-/* submit Container */
+/* Submit Container */
 .submit-container{
     height: 91.25vh;
     width: 100%;
@@ -29,63 +29,25 @@
     flex-direction: column;
 }
 
-.submit-box{
-    height: 450px;
-    width: 650px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    padding: 10px;
-}
-
-.submit-brain-logo{
-    height: 100%;
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #8A3815;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-.submit-brain-logo img{
-    object-fit: contain;
-}
-
-.submit-text{
-    height: 100%;
-    width: 55%;
+.submit-text-container{
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #F8F8FF;
+    width: 60%;
 }
 
-.submit-text h4 , button , p {
-    margin: 10px 0px;
-}
-
-.submit-text h4{
+.submit-text-container h5{
     font-weight: bold;
+    font-size: 25px;
 }
 
-.submit-text button{
-    width: 90px;
-    height: 50px;
-    background-color: #8A3815;
-    color: white;
-    font-weight: bold;
-    border: 0px;
-    border-radius: 25px;
-    font-size: 20px;
+.submit-text-container p{
+    text-align: center;
+    font-size: 17px;
 }
 
-.submit-text a {
+.submit-container a{
     color: #8A3815;
 }
