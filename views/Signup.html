@@ -1,7 +1,7 @@
 <html>
     <head>
         <!--media queries-->
-        <title>Contact</title>
+        <title>Encephalon</title>
         <meta name="author" content="Jude Savio">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
@@ -13,6 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!--Typed.js -->
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
         <!-- Font Awesome Kit -->
         <script src="https://kit.fontawesome.com/6d2d9357ff.js" crossorigin="anonymous"></script>
         <!-- Linking custom CSS file -->
@@ -20,7 +22,7 @@
     </head>
     <body>
         <!-- Hero Section -->
-        <section id="submit">
+        <section>
 
             <!-- Nav Bar Module -->
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -34,39 +36,27 @@
                             <li class="nav-item">
                                 <a href="/home" class="nav-link active">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/home" class="nav-link">FAQ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/contact" class="nav-link">Contact</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
             <div class="submit-container">
+                <div class="submit-box">
 
-                <div class="brain-banner">
-                    <img src="/assets/img/brain-submit.png" alt="Cool looking brain image">
-                </div>
-                <div class="submit-text-container">
-                    <h5>Thank you for reaching out to us! 🌟</h5>
-                    <p>
-                        We're thrilled to let you know that we've received your message and our fantastic team is already on it! 🚀
-                        <br><br>
-                        Please sit back, relax, and expect a prompt response from us in no time 🕒 We're excited to assist you with your inquiry and are dedicated to making your experience with us nothing short of amazing! 🌈
-                        <br><br>
-                        In the meantime, if you have any more thoughts or questions, feel free to share them with us. We're here to make your day even brighter! ☀️
-                    </p>
-                    <p>Redirecting in (<span id="countdown">15</span>) seconds or click <a href="/home">here</a></p>
-                </div>
+                    <div class="submit-brain-logo">
+                        <img src="assets/img/brain-register.png" alt="A gentle brain image">
+                    </div>
 
+                    <div class="submit-text">
+                        <h4> Hello, there! &#x1F44B;</h4>
+                        <button id="submit-btn">Signup</button>
+                        <p> Have an account? <a href="/login">Login</a></p>
+                    </div>
+
+                </div>
             </div>
+
         </section>
-
-        <!-- Adding in the Handler JS file -->
-        <script src="/js/handler/submit-handler.js"></script>
-
     </body>
 </html>

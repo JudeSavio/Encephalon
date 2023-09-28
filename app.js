@@ -21,16 +21,30 @@ app.use('/submit', (req, res, next) => {
   }
 });
 
+
+// Home page is served.
 app.get('/home', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+// Contact page is served.
 app.get('/contact', (req, res) => {
   res.sendFile(__dirname + '/views/contact.html');
 });
 
+// Submit page is served.
 app.get('/submit', (req, res) => {
   res.sendFile(__dirname + '/views/submit.html');
+});
+
+// Login page is served.
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/views/login.html');
+});
+
+// Signup page is served.
+app.get('/register', (req, res) => {
+  res.sendFile(__dirname + '/views/signup.html');
 });
 
 
