@@ -8,7 +8,7 @@ function updateCountdown() {
 
   if (countdown <= 0) {
     // Redirect to the desired URL after the countdown reaches 0
-    window.location.href = '/home';
+    window.location.href = '/profile';
   } else {
     countdown--; // Decrement the countdown timer
     setTimeout(updateCountdown, 1000); // Update every second (1000 ms)
