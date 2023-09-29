@@ -76,7 +76,7 @@ app.get('/register', (req, res) => {
 
 // Profile is served - with isLoggedIn middleware
 app.get('/profile', isLoggedIn , (req , res) => {
-  res.send(`Hello ${req.user.displayName}`);
+  res.sendFile(__dirname + '/views/profile.html');
 });
 
 // logout page is served.

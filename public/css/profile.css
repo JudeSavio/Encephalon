@@ -1,0 +1,97 @@
+*{
+    margin : 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Nav Bar Section */
+
+.navbar{
+    background-color: #FAE8E8;
+    display: fixed;
+    height: 70px;
+    width: 100%;
+}
+
+/* Sidebar */
+.profile-sidebar{
+    width: 100px; 
+    background-color: #8A3815; 
+    color: #fff; 
+    position: fixed; 
+    height: 100%; 
+    left: 0; 
+    top: 0; 
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a{
+    text-decoration: none;
+    color: #fae8e8df;;
+}
+
+
+.quake-icon {
+    animation-delay: 5s;
+    animation-duration: 3s;
+    animation: quake 0.2s linear;
+}
+
+@keyframes quake {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    60% {
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        transform: translate(2px, 2px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.encephalon-h2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 24px;
+    height: 25%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.icon i{
+    margin-bottom: 10px;
+}
+
+#home{
+    border-bottom: 1px white;
+}
+
+.logout-icon {
+    text-align: center;
+    font-size: 24px;
+}
+
+.content-container {
+    margin-left: 100px; 
+    padding: 20px; 
+    height: 91.25vh;
+    background-color:#F8F8FF;
+}
