@@ -49,23 +49,49 @@
                 </div>
 
                 <div class="icon">
-                    <i class="fa-solid fa-house quake-icon" style="color: #ffffff;"></i>
-                    <i class="fa-solid fa-gear" style="color: #fae8e8df;"></i>
+                    <i id="questionnaire-icon" class="fa-solid fa-house quake-icon" style="color: #ffffff;"></i>
+                    <i id="settings-icon" class="fa-solid fa-gear" style="color: #fae8e8df;"></i>
                 </div>
                 
                 <div class="logout-icon">
-                    <a href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #fae8e8df;;"></i></a>
+                    <a href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #fae8e8df;"></i></a>
                 </div>
 
             </div>
 
             <div class="content-container">
-                <!-- Main content goes here -->
+
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+
+                <!-- Default content (Questionnaire) -->
+                <div id="questionnaire" class="questionnaire-box">
+
+                    <div class="question">
+                        <h2>What's your first and last name?</h2>
+                        <input type="text" class="answer" placeholder="Your answer">
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="prev" disabled><i class="fa-solid fa-arrow-left" style="color: #8a3815;"></i></button>
+                        <button class="next"><i class="fa-solid fa-arrow-right" style="color: #8a3815;"></i></button>
+                        <button class="submit">Submit</button>
+                    </div>
+
+                </div>
+
+                <!-- Settings content (hidden by default) -->
+                <div id="settings" style="display: none;">
+                    <h2>Settings</h2>
+                    <!-- Add your settings content here -->
+                </div>
+
             </div>
 
         </section> 
 
-        <script type="text/javascript" src="../public/js/handler/profile-handler.js"></script>
+        <script type="text/javascript" src="../js/handler/profile-handler.js"></script>
 
     </body>
 

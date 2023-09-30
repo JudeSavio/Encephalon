@@ -7,7 +7,7 @@
 /* Nav Bar Section */
 
 .navbar{
-    background-color: #FAE8E8;
+    background-color: #fae8e8df;
     display: fixed;
     height: 70px;
     width: 100%;
@@ -31,7 +31,7 @@
 
 .logo a{
     text-decoration: none;
-    color: #fae8e8df;;
+    color: #fae8e8df;
 }
 
 
@@ -93,5 +93,112 @@
     margin-left: 100px; 
     padding: 20px; 
     height: 91.25vh;
-    background-color:#F8F8FF;
+    background-color:#FFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* QUESTIONNAIRE RULES */
+
+#questionnaire{
+    height: 600px;
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.question{
+    color: #8A3815;
+    margin: 20px 0px;
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.question h2{
+    margin: 20px 0px;
+}
+
+/* Style the input tag */
+input.answer {
+    border: none; 
+    border-bottom: 2px solid black; 
+    font-size: 20px; 
+    padding: 5px; 
+    width: 100%; 
+    height: 50px;   
+    background-color: #FFF;
+    outline: none;
+    margin-top: 40px;
+}
+
+input.answer:focus {
+    border-bottom: 2px solid #8A3815; 
+}
+
+/* Style the progress bar */
+.progress-bar {
+    background-color: #FAE8E8;
+    height: 10px;
+    width: 100%;
+    border-radius: 25px;
+}   
+
+.progress {
+    background-color: #8A3815;
+    height: 100%;
+    width: 1.5%; /* Set the first width */
+    border-radius: 25px;
+}
+
+
+/* Style the navigation buttons */
+.nav-buttons {
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.answer {
+    width: 100%;
+}
+
+/* Style the "Prev" and "Next" buttons */
+.prev,
+.next {
+    background-color: #FAE8E8;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.prev:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Style the submit button */
+.submit {
+    background-color: #8A3815;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50px;
+    display: none;
 }

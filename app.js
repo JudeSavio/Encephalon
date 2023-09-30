@@ -75,7 +75,7 @@ app.get('/register', (req, res) => {
 });
 
 // Profile is served - with isLoggedIn middleware
-app.get('/profile', isLoggedIn , (req , res) => {
+app.get('/profile', (req , res) => {
   res.sendFile(__dirname + '/views/profile.html');
 });
 

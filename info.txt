@@ -4,6 +4,8 @@ pale pink -> #FAE8E8
 
 dark brown -> #8A3815
 
+non-pale pink -> #fae8e8df
+
 Mail Trap Creds
 
 var transport = nodemailer.createTransport({
