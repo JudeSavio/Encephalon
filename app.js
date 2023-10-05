@@ -4,6 +4,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const passport = require('passport');
 const path = require('path');
+const bodyParser = require('body-parser');
 const session = require('express-session'); // to maintain sessions for users through cookies.
 require('./public/js/handler/auth-handler'); // requiring in the passport middleware into our app
 
@@ -16,6 +17,8 @@ const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.json());
 
 
 // Middleware function to see if the user is logged in or not before accessing protected URLs (/profile)
@@ -139,7 +142,14 @@ app.post('/submit', (req, res) => {
 
   });
 
-  });
+});
+
+// Define the /answers endpoint
+app.post('/answers', (req, res) => {
+  const answers = req.body; 
+  console.log(req.body)
+  res.json({ message: 'Answers received and processed successfully' });
+});
 
   
 const port = process.env.PORT || 3000;

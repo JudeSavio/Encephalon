@@ -20,6 +20,7 @@
   "homepage": "https://github.com/JudeSavio/Encephalon#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cookie": "^0.5.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
