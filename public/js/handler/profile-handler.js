@@ -11,6 +11,17 @@ const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const submitButton = document.querySelector('.submit')
 
+const icon = document.getElementById('add-report');
+icon.onclick = function() {
+    settingsDiv.style.display = 'none';
+    questionnaireDiv.style.display = 'flex';
+    questionnaireDiv.style.justifyContent = 'center';
+    questionnaireDiv.style.alignItems = 'center';
+    questionnaireIcon.style.color = '#FFFFFF';
+    settingsIcon.style.color = "#fae8e8df"
+    progressBar.style.display = 'block';
+};
+
 // Add an event listener to the settings icon
 settingsIcon.addEventListener('click', function() {
     // Toggle the display of the questionnaire and settings divs

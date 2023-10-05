@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const passport = require('passport');
+const path = require('path');
 const session = require('express-session'); // to maintain sessions for users through cookies.
 require('./public/js/handler/auth-handler'); // requiring in the passport middleware into our app
 
@@ -10,6 +11,12 @@ const app = express();
 app.use(session({secret:process.env.EXPRESS_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+const ejs = require('ejs');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 // Middleware function to see if the user is logged in or not before accessing protected URLs (/profile)
 function isLoggedIn(req, res,next) {
@@ -76,7 +83,11 @@ app.get('/register', (req, res) => {
 
 // Profile is served - with isLoggedIn middleware
 app.get('/profile', (req , res) => {
-  res.sendFile(__dirname + '/views/profile.html');
+  const userProfile = req.user;
+  const profilePicture = userProfile.photos[0].value;
+
+  // Render the EJS template located in the 'views' folder
+  res.render('profile', { profilePicture });
 });
 
 // logout page is served.

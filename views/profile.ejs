@@ -37,6 +37,11 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link">FAQ</a>
                             </li>
+                            <li class="nav-item">
+                                <div class="profile-pic-container">
+                                    <img class="profile-pic" src="<%= profilePicture %>" alt="profile picture">
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +55,7 @@
 
                 <div class="icon">
                     <i id="questionnaire-icon" class="fa-solid fa-house quake-icon" style="color: #ffffff;"></i>
-                    <i id="settings-icon" class="fa-solid fa-gear" style="color: #fae8e8df;"></i>
+                    <i id="settings-icon" class="fa-solid fa-gear quake-icon" style="color: #fae8e8df;"></i>
                 </div>
                 
                 <div class="logout-icon">
@@ -85,6 +90,37 @@
                 <div id="settings" style="display: none;">
                     <h2>Settings</h2>
                     <!-- Add your settings content here -->
+                    <div class="settings-container">
+                        <div class="account-container">
+                            <h3>Account Details</h3>
+                            <form action="" method="post">
+                                <!-- Name Field -->
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required><br><br>
+                                
+                                <!-- Age Field -->
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" name="age" required><br><br>
+                                
+                                <!-- Email Field -->
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required><br><br>
+                                
+                                <!-- Submit Button -->
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                        <hr>
+                        <div class="report-container">
+                            <h3>Reports</h3>
+                            <div class="report-container">
+                                <!-- once the report is generated an image element needs to be created her and a snapshot of the report should be posted here. Also the report needs to be stored in mongo db-->
+                                <div class="report-placeholder">
+                                    <a href="#questionnaire"><i class="fa-solid fa-circle-plus" id="add-report" style="color: #ffffff;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
