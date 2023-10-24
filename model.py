@@ -1,10 +1,6 @@
 from flask import Flask , request
 from flask_cors import CORS
-
 import openai
-
-openai.api_key = "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"
-
 import streamlit as st
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
@@ -15,6 +11,13 @@ from langchain.chains import LLMChain
 from dotenv import load_dotenv
 import random
 import requests
+import os
+
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+print(openai.api_key)
 
 app = Flask(__name__)
 CORS(app) 
