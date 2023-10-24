@@ -7,11 +7,14 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session'); // to maintain sessions for users through cookies.
 require('./public/js/handler/auth-handler'); // requiring in the passport middleware into our app
-
+const axios = require('axios');
+const request = require('request');
 const app = express();
+
 app.use(session({secret:process.env.EXPRESS_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 const ejs = require('ejs');
 
@@ -88,7 +91,7 @@ app.get('/register', (req, res) => {
 app.get('/profile', (req , res) => {
   const userProfile = req.user;
   const profilePicture = userProfile.photos[0].value;
-
+  console.log(profilePicture)
   // Render the EJS template located in the 'views' folder
   res.render('profile', { profilePicture });
 });
@@ -148,7 +151,28 @@ app.post('/submit', (req, res) => {
 app.post('/answers', (req, res) => {
   const answers = req.body; 
   console.log(req.body)
-  res.json({ message: 'Answers received and processed successfully' });
+  // res.json({ message: 'Answers received and processed successfully' });
+  console.log('The JSON Was posted to /answers')
+
+  request.post('http://127.0.0.1:5000/model_input', { json: answers }, function (error, response, body) {
+    if (error) {
+      console.error('Error:', error);
+    } else {
+      console.log('Response:', body);
+    }
+  });
+  
+
+});
+
+app.post('/results', (req, res) => {
+  // Process the JSON data received from Flask
+  const receivedData = req.body;
+  console.log('JSON Recieved on this endpoint : /results')
+  
+  // Printing the recieved JSON file
+  console.log(req.body)
+
 });
 
   
