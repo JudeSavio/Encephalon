@@ -16,6 +16,8 @@ Encephalon is designed to provide a user-friendly and intuitive interface for st
 
 - **Support Request:** Users can get in touch with the Encephalon team by raising a support request through the contact section.
 
+- **Data Storage:** Users can securely store and manage their personal details within the app.
+
 ## Setup
 
 To get started with Encephalon, you'll need to follow these simple installation steps:
