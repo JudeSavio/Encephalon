@@ -12,7 +12,7 @@ from langchain.vectorstores import FAISS
 
 load_dotenv()
 
-API_KEY = os.getenv("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")
+API_KEY = os.getenv("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")
 
 print(API_KEY)
 

@@ -135,7 +135,6 @@ app.get("/reports", async(req, res) => {
   console.log(response_message);
 
     res.render("reports", {
-      
       serverScore: response_message.serverScore,
       serverDiagnosis: response_message. serverDiagnosis,
     });
