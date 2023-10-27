@@ -1,0 +1,103 @@
+<html>
+
+    <head>
+        <!--media queries-->
+        <title>FAQ</title>
+        <meta name="author" content="Jude Savio">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- Adding favicon-->
+        <link rel="shortcut icon" type="image/x-icon" href= "/assets/img/icon.ico" />
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Font Awesome Kit -->
+        <script src="https://kit.fontawesome.com/6d2d9357ff.js" crossorigin="anonymous"></script>
+        <!-- Linking custom CSS file -->
+        <link rel="stylesheet" href="/css/faq.css">
+    </head>
+
+    <body>
+        <!-- Hero Section -->
+        <section id="about">
+
+            <!-- Nav Bar Module -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container" style="color: #00001f;">
+                    <h3>Encephalon.</h3>
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#ToggleMenu" aria-controls="ToggleMenu" aria-expanded="false" aria-label="toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="ToggleMenu">
+                        <ul class="navbar-nav ms-auto" style="text-align: right;">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link active">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- FAQ Container-->
+            <div class="faq-container">
+                <!-- FAQ Form-->
+                <div class="faq-form">
+                    <h2> Your Questions , Our Answers ...</h2>
+                    <p>We understand that it takes remarkable courage to open up about your problems. Good on you for taking the first step. Here's some of the most frequently asked questions on our platform.</p>
+                    <div class="faq-item">
+                        <div class="question">
+                            <span style="font-weight: bold">How accurate are the results from the app?</span>
+                            <span class="toggle">+</span>
+                        </div>
+                        <div class="answer">
+                            We are constantly working on improving the app's performance. The metrics derived from the app are based off the responses gathered in the publicly known 'DiagnoseMe' dataset that contains doctor-patient interactions.
+                        </div>
+                    </div>
+            
+                    <div class="faq-item">
+                        <div class="question">
+                            <span style="font-weight: bold">How do I use this app?</span>
+                            <span class="toggle">+</span>
+                        </div>
+                        <div class="answer">
+                            You can create an account on our platform and take our quiz that analyses your mental health. We also provide you with a take home report for review later on. If you do run into any questions, please get in touch with us through our contact page.
+                        </div>
+                    </div>
+            
+                    <div class="faq-item">
+                        <div class="question">
+                            <span style="font-weight: bold">I have questions regarding my report results?</span>
+                            <span class="toggle">+</span>
+                        </div>
+                        <div class="answer">
+                            Please get in touch with us through our contact section and one of our members will review your request and get back to you at the earliest.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <script>
+            const faqItems = document.querySelectorAll('.faq-item');
+    
+            faqItems.forEach((item) => {
+                const question = item.querySelector('.question');
+                const answer = item.querySelector('.answer');
+                const toggle = question.querySelector('.toggle');
+    
+                question.addEventListener('click', () => {
+                    if (answer.style.display === 'none' || answer.style.display === '') {
+                        answer.style.display = 'block';
+                        answer.style.marginTop = '10px'
+                        toggle.textContent = '–'; // Change to a minus sign when expanded
+                    } else {
+                        answer.style.display = 'none';
+                        toggle.textContent = '+'; // Change back to a plus sign when collapsed
+                    }
+                });
+            });
+        </script>
+    </body>

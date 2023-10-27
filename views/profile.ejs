@@ -35,7 +35,7 @@
                                 <a href="/contact" class="nav-link active">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">FAQ</a>
+                                <a href="/faq" class="nav-link">FAQ</a>
                             </li>
                             <li class="nav-item">
                                 <div class="profile-pic-container">
@@ -81,7 +81,7 @@
                     <div class="nav-buttons">
                         <button class="prev" disabled><i class="fa-solid fa-arrow-left" style="color: #8a3815;"></i></button>
                         <button class="next"><i class="fa-solid fa-arrow-right" style="color: #8a3815;"></i></button>
-                        <button class="submit sub-quest">Submit</button>
+                        <button id="loading-button" class="submit sub-quest">Submit</button>
                     </div>
 
                 </div>
@@ -93,33 +93,27 @@
                     <div class="settings-container">
                         <div class="account-container">
                             <h3>Account Details</h3>
-                            <form action="" method="post">
+                            <form action="/updateProfile" method="post">
                                 <!-- Name Field -->
-                                <label for="name">Name:</label>
-                                <input type="text" id="name" name="name" required><br><br>
+                                <label id="label-name" for="name">Name:</label>
+                                <input type="text" id="name" name="name" required value="<%= name %>"><br><br>
                                 
                                 <!-- Age Field -->
                                 <label for="age">Age:</label>
-                                <input type="number" id="age" name="age" required><br><br>
+                                <input type="number" id="age" name="age" required value="<%= age %>"><br><br>
                                 
                                 <!-- Email Field -->
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required><br><br>
+                                <input type="email" id="email" name="email" required value="<%= email %>"><br><br>
+                                
+                                <!-- Hidden Input for uid -->
+                                <input type="hidden" id="uid" name="uid" value="<%= userId %>">
                                 
                                 <!-- Submit Button -->
                                 <input type="submit" value="Submit">
                             </form>
                         </div>
-                        <hr>
-                        <div class="report-container">
-                            <h3>Reports</h3>
-                            <div class="report-container">
-                                <!-- once the report is generated an image element needs to be created her and a snapshot of the report should be posted here. Also the report needs to be stored in mongo db-->
-                                <div class="report-placeholder">
-                                    <a href="#questionnaire"><i class="fa-solid fa-circle-plus" id="add-report" style="color: #ffffff;"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -128,7 +122,6 @@
         </section> 
 
         <script type="text/javascript" src="../js/handler/profile-handler.js"></script>
-
     </body>
 
 </html>

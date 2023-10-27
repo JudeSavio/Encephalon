@@ -12,16 +12,16 @@ const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const submitButton = document.querySelector('.submit')
 
-const icon = document.getElementById('add-report');
-icon.onclick = function() {
-    settingsDiv.style.display = 'none';
-    questionnaireDiv.style.display = 'flex';
-    questionnaireDiv.style.justifyContent = 'center';
-    questionnaireDiv.style.alignItems = 'center';
-    questionnaireIcon.style.color = '#FFFFFF';
-    settingsIcon.style.color = "#fae8e8df"
-    progressBar.style.display = 'block';
-};
+// const icon = document.getElementById('add-report');
+// icon.onclick = function() {
+//     settingsDiv.style.display = 'none';
+//     questionnaireDiv.style.display = 'flex';
+//     questionnaireDiv.style.justifyContent = 'center';
+//     questionnaireDiv.style.alignItems = 'center';
+//     questionnaireIcon.style.color = '#FFFFFF';
+//     settingsIcon.style.color = "#fae8e8df"
+//     progressBar.style.display = 'block';
+// };
 
 let currentQuestion = 0;
 const totalQuestions = 25;
@@ -37,19 +37,19 @@ const questionsList = [
     "Which country are you from? ",
     "What is your type of degree?",
     "What is your current year of study?",
-    "What is your current mode of study?",
-    "Please choose one of the appropriate options in regards to your lectures ?",
+    "What is your current mode of study? (Full-time / Part-Time)",
+    "How do you consume lectures? (In-person / Online / Both )",
     "What is the name of your course? ( Enter the full name of your course eg. Computer Science , Information Technology etc. )",
     "Could you please provide us with your current WAM, rounded to two decimal places?",
     "What is your current marital status?",
     "Do you feel like you have anxiety?",
     "Are you currently feeling stressed in the current semester? ",
     "Have you had panic attacks during the course of your study?",
-    "How often do you exercise?",
+    "How many days of the week do you exercise?",
     "Do you have high / low blood pressure?",
     "How many hours of sleep you catch each day?",
     "Have you any difficulties concentrating during this semester? ",
-    "Have you lost of gained a significant amount of weight during this semester? ",
+    "Have you lost or gained a significant amount of weight during this semester? ",
     "Do you often feel tired or feel like you have a sudden drop in energy levels during any part of your day?",
     "Have you lost interest in activities you used to enjoy?",
     "If you have been staying away from family, have you been feeling homesick or lonely during this semester? ",
@@ -121,6 +121,12 @@ prevButton.addEventListener('click', () => {
 });
 
 questionnaireSubmitButton.addEventListener('click', () => {
+    const answerfield = document.querySelector('.answer');
+    answers[questionsList[currentQuestion]] = answerfield.value
+    answerfield.value = ''
+    console.log(answers)
+    questionnaireSubmitButton.textContent = 'Loading....'
+    document.getElementById('loading-button').classList.add('loading-text');
     fetch('/answers', {
         method: 'POST',
         headers: {
@@ -128,20 +134,25 @@ questionnaireSubmitButton.addEventListener('click', () => {
         },
         body: JSON.stringify(answers)
       })
-        .then(response => {
-          if (response.ok) {
-            return response.json(); // If you expect a JSON response from the server
+    .then(async response => {
+
+        if (response.ok) {
+            const data = await response.json(); // Convert the response to JSON
+         
+            const queryParams = new URLSearchParams();
+            queryParams.append('score', data.body.score);
+            queryParams.append('diagnosis', data.body.diagnosis);
+      
+            window.location.href = '/reports?' + queryParams.toString();
           } else {
             throw new Error('Failed to post data');
           }
-        })
-        .then(data => {
-          // Handle the response data here (if any)
-          console.log(data);
-        })
-        .catch(error => {
-          console.error(error);
-        }); 
+
+        
+    })
+    .catch(error => {
+        console.error(error);
+    }); 
 });
 
 // Function to update the progress bar

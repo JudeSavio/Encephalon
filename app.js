@@ -9,6 +9,18 @@ const session = require('express-session'); // to maintain sessions for users th
 require('./public/js/handler/auth-handler'); // requiring in the passport middleware into our app
 const axios = require('axios');
 const request = require('request');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://dharan731:testhello123@cluster0.zeepkle.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  uid: String,
+  email: String,
+});
+
+const User = mongoose.model('User', userSchema);
+
 const app = express();
 
 app.use(session({secret:process.env.EXPRESS_SECRET}));
@@ -88,21 +100,47 @@ app.get('/register', (req, res) => {
 });
 
 // Profile is served - with isLoggedIn middleware
-app.get('/profile', (req , res) => {
+app.get('/profile', async(req , res) => {
   const userProfile = req.user;
   const profilePicture = userProfile.photos[0].value;
-  console.log(profilePicture)
-  // Render the EJS template located in the 'views' folder
-  res.render('profile', { profilePicture });
+  console.log(typeof profilePicture)
+  const userId = req.user.id
+
+  let name = ''
+  let age = ''
+  let email = ''
+   
+  User.findOne({ uid: userId }).then((data) => {
+    console.log(data);
+    res.render('profile', { profilePicture, userId: data.uid, name : data.name, email: data.email, age: data.age });
+  }).catch((err) => {
+    res.render('profile', { profilePicture, userId, name , email, age });
+  });
+
+  
 });
 
-// logout page is served.
-app.get('/logout' , (req, res) => {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    req.session.destroy()
-    res.redirect('/home');
-  });
+// Signup page is served.
+// app.get('/reports', (req, res) => {
+//   res.sendFile(__dirname + '/views/reports.html');
+// });
+
+
+app.get("/reports", async(req, res) => {
+  const response_message = {
+   serverScore: req.query.score,
+    serverDiagnosis: req.query.diagnosis
+  };
+
+  console.log(response_message);
+
+    res.render("reports", {
+      
+      serverScore: response_message.serverScore,
+      serverDiagnosis: response_message. serverDiagnosis,
+    });
+   
+
 });
 
 
@@ -149,6 +187,11 @@ app.post('/submit', (req, res) => {
 
 // Define the /answers endpoint
 app.post('/answers', (req, res) => {
+
+  const response_message = {
+    serverScore: req.query.score,
+     serverDiagnosis: req.query.diagnosis
+   };
   const answers = req.body; 
   console.log(req.body)
   // res.json({ message: 'Answers received and processed successfully' });
@@ -156,9 +199,15 @@ app.post('/answers', (req, res) => {
 
   request.post('http://127.0.0.1:5000/model_input', { json: answers }, function (error, response, body) {
     if (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
+      res.send({error: error})
     } else {
-      console.log('Response:', body);
+      res.send(response)
+      // res.render("reports", {
+      
+      //   serverScore: response_message.score,
+      //   serverDiagnosis: response_message.diagnosis,
+      // });
     }
   });
   
@@ -173,6 +222,64 @@ app.post('/results', (req, res) => {
   // Printing the recieved JSON file
   console.log(req.body)
 
+});
+
+app.post('/updateProfile', async (req, res) => {
+  const { uid, name, age, email } = req.body;
+  const user = req.user.id
+  try {
+    // Check if a user profile with the provided `uid` already exists
+    const existingUser = await User.findOne({ uid: user });
+
+    if (existingUser) {
+      // If the profile exists, update it
+      existingUser.name = name;
+      existingUser.age = age;
+      existingUser.email = email;
+      const updatedUser = await existingUser.save();
+      res.redirect('/profile');
+    } else {
+      // If the profile doesn't exist, create a new one
+      const newUser = new User({ uid, name, age, email });
+      const savedUser = await newUser.save();
+      res.redirect('/profile');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Could not update or create the user profile' });
+  }
+});
+
+app.get('/getProfile/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  const user = req.user.id
+  try {
+    // Find the user profile with the provided `uid`
+    const userProfile = await User.findOne({ uid: user });
+
+    if (userProfile) {
+      res.json({ message: 'User profile found', user: userProfile });
+    } else {
+      res.status(404).json({ error: 'User profile not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Could not retrieve the user profile' });
+  }
+});
+
+// logout page is served.
+app.get('/logout' , (req, res) => {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    req.session.destroy()
+    res.redirect('/home');
+  });
+});
+
+// FAQ page is served.
+app.get('/faq', (req, res) => {
+  res.sendFile(__dirname + '/views/faq.html');
 });
 
   

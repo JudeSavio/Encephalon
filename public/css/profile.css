@@ -215,6 +215,21 @@ input.answer:focus {
 }
 
 
+.loading-text {
+animation: fade 1.5s infinite;
+}
+
+@keyframes fade {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
+
+
 /* Settings Div */
 
 #settings {
@@ -230,10 +245,10 @@ input.answer:focus {
 }
 
 .settings-container{
-    padding: 10px;
+    padding: 36px;
     background-color: #f0eeee;
     width: 700px;
-    height: 530px;
+    /* height: 530px; */
     border-radius: 15px;
 }
 
@@ -254,4 +269,16 @@ input.answer:focus {
 
 .report-placeholder i{
     font-size: 30px;
+}
+
+#name{
+    margin-left: 5px;
+}
+
+#age{
+    margin-left: 20px;
+}
+
+#email{
+    margin-left: 8px;
 }

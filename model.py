@@ -1,58 +1,60 @@
-from flask import Flask , request
+import os
+import random
+from flask import Flask, request, jsonify
+from dotenv import load_dotenv
 from flask_cors import CORS
-import openai
-import streamlit as st
+from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.vectorstores import FAISS
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import LLMChain
-from dotenv import load_dotenv
-import random
-import requests
-import os
+from langchain.vectorstores import FAISS
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+API_KEY = os.getenv("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")
 
-print(openai.api_key)
+print(API_KEY)
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
-@app.route('/', methods=['GET'])
+
+@app.route("/", methods=["GET"])
 def root():
-    return 'Model Server running'
+    return "Model Server running"
 
 
-@app.route('/model_input', methods=['POST'])
+@app.route("/model_input", methods=["POST"])
 def model_input():
     try:
         data = request.get_json()
 
-        print('Received JSON data:')
+        print("Received JSON data:")
         print(data)
 
-        def mental_score():
-            random_value = random.randint(50, 100)
-            return random_value
-
-        score = mental_score()
-
-        print()
-        print()
-
         def lang_chain():
-
             prompt_data = list(data.values())[len(data) - 1]
 
+            print()
+            print("prompt data recieved was :")
+            print(prompt_data)
+
             # 1. Vectorise the sales response csv data
-            loader = CSVLoader(file_path="output.csv")
+            try:
+                loader = CSVLoader(
+                    file_path="./output.csv",
+                    csv_args={
+                        "delimiter": ",",
+                        "quotechar": '"',
+                    },
+                    encoding="utf-8",
+                )
+            except Exception as e:
+                print("Error loading CSV file: " + str(e))
             documents = loader.load()
 
-            embeddings = OpenAIEmbeddings(openai_api_key=openai.api_key)
+            embeddings = OpenAIEmbeddings(openai_api_key=API_KEY)
 
             db = FAISS.from_documents(documents, embeddings)
 
@@ -61,20 +63,21 @@ def model_input():
 
                 page_contents_array = [doc.page_content for doc in similar_response]
 
-                # print(page_contents_array)
-
                 return page_contents_array
 
-
-            llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613", openai_api_key=openai.api_key)
+            llm = ChatOpenAI(
+                temperature=0,
+                model="gpt-3.5-turbo-16k-0613",
+                openai_api_key=API_KEY,
+            )
 
             template = """
             You are a world class mental health buddy named Encephalon. 
             I will share a prospect's message with you and you will give me the best answer that 
-            I should send to this prospect based on past best practies, 
+            I should send to this prospect based on past best practices, 
             and you will follow ALL of the rules below:
 
-            1/ Response should be very similar or even identical to the past best practies, 
+            1/ Response should be very similar or even identical to the past best practices, 
             in terms of length, ton of voice, logical arguments and other details
 
             2/ If the best practice are irrelevant, then try to mimic the style of the best practice to prospect's message
@@ -82,15 +85,14 @@ def model_input():
             Below is a message I received from the prospect:
             {message}
 
-            Here is a list of best practies of how we normally respond to prospect in similar scenarios:
+            Here is a list of best practices of how we normally respond to prospects in similar scenarios:
             {best_practice}
 
             Please write the best response that I should send to this prospect:
             """
 
             prompt = PromptTemplate(
-                input_variables=["message", "best_practice"],
-                template=template
+                input_variables=["message", "best_practice"], template=template
             )
 
             chain = LLMChain(llm=llm, prompt=prompt)
@@ -105,22 +107,23 @@ def model_input():
 
         diagnosis = lang_chain()
 
-        response_message = {
-            "score" : score,
-            "diagnosis" : diagnosis
-        }
-        
-        print()
-        print('Results were processed.')
+        def mental_score():
+            random_value = random.randint(65, 80)
+            return random_value
 
-        # Post the response message to the /results endpoint
-        requests.post("http://localhost:3000/results", json=response_message)
+        score = mental_score()
 
-        return 'JSON Data was received, processed and posted to /results'
-    
+        response_message = {"score": score, "diagnosis": diagnosis}
+
+        print(response_message)
+        print("Results were processed.")
+
+        return jsonify(response_message)
+
     except Exception as e:
         # Handle any potential errors, e.g., invalid JSON format
-        return {'error': str(e)}
+        return jsonify({"error": str(e)})
+
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
