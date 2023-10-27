@@ -20,10 +20,13 @@ To get started with Encephalon, you'll need to follow these simple installation 
 
 ## Configuration
 
-To configure Encephalon, make sure to set the following secret key values in your `.env` file:
+To configure Encephalon, make sure to set the following environment variables in your `.env` file:
 
-- `SECRET_KEY`: `[Your Secret Key Value]`
-- `DATABASE_URL`: `[Your Database URL]`
-- `API_KEY`: `[Your API Key]`
-- `SMTP_USERNAME`: `[Your SMTP Username]`
-- `SMTP_PASSWORD`: `[Your SMTP Password]`
+```env
+MAILUSER= Mail Trap Username
+MAILPASS= Mail Trap Password
+GOOGLE_CLIENT_ID= Firebase Client ID
+GOOGLE_CLIENT_SECRET= Firebase Client Secret
+EXPRESS_SECRET= Express Session Secret
+OPENAI_API_KEY= Open AI API Key
+MONGO_DB_URL= Mongo DB URI
