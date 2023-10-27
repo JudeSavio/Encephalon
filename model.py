@@ -9,12 +9,18 @@ from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import FAISS
+from decouple import Config, Csv
+from dotenv import load_dotenv
+import os
 
+# Load the .env file
 load_dotenv()
 
-API_KEY = os.getenv("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")
+# Access the keys
+API_KEY = os.getenv('OPENAI_API_KEY')
 
-print(API_KEY)
+# Now you can use API_KEY in your code
+print(f"API Key: {API_KEY}")
 
 app = Flask(__name__)
 CORS(app)
@@ -43,7 +49,7 @@ def model_input():
             # 1. Vectorise the sales response csv data
             try:
                 loader = CSVLoader(
-                    file_path="./output.csv",
+                    file_path="output.csv",
                     csv_args={
                         "delimiter": ",",
                         "quotechar": '"',
@@ -54,9 +60,13 @@ def model_input():
                 print("Error loading CSV file: " + str(e))
             documents = loader.load()
 
+            print('Embedding started')
+
             embeddings = OpenAIEmbeddings(openai_api_key=API_KEY)
 
             db = FAISS.from_documents(documents, embeddings)
+
+            print('RAG started')
 
             def retrieve_info(query):
                 similar_response = db.similarity_search(query, k=1)
@@ -70,6 +80,8 @@ def model_input():
                 model="gpt-3.5-turbo-16k-0613",
                 openai_api_key=API_KEY,
             )
+
+            print('Module Loaded')
 
             template = """
             You are a world class mental health buddy named Encephalon. 
@@ -95,6 +107,8 @@ def model_input():
                 input_variables=["message", "best_practice"], template=template
             )
 
+            print('Response generation started')
+
             chain = LLMChain(llm=llm, prompt=prompt)
 
             def generate_response(message):
@@ -114,6 +128,8 @@ def model_input():
         score = mental_score()
 
         response_message = {"score": score, "diagnosis": diagnosis}
+
+        print('JSON CReated')
 
         print(response_message)
         print("Results were processed.")

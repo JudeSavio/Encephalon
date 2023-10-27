@@ -10,7 +10,6 @@ require('./public/js/handler/auth-handler'); // requiring in the passport middle
 const axios = require('axios');
 const request = require('request');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://dharan731:testhello123@cluster0.zeepkle.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -24,6 +23,7 @@ const User = mongoose.model('User', userSchema);
 const app = express();
 
 app.use(session({secret:process.env.EXPRESS_SECRET}));
+mongoose.connect(process.env.MONGO_DB_URL , { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
@@ -103,7 +103,7 @@ app.get('/register', (req, res) => {
 app.get('/profile', async(req , res) => {
   const userProfile = req.user;
   const profilePicture = userProfile.photos[0].value;
-  console.log(typeof profilePicture)
+  console.log(profilePicture)
   const userId = req.user.id
 
   let name = ''
@@ -135,6 +135,7 @@ app.get("/reports", async(req, res) => {
   console.log(response_message);
 
     res.render("reports", {
+      
       serverScore: response_message.serverScore,
       serverDiagnosis: response_message. serverDiagnosis,
     });
