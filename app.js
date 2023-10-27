@@ -100,7 +100,7 @@ app.get('/register', (req, res) => {
 });
 
 // Profile is served - with isLoggedIn middleware
-app.get('/profile', async(req , res) => {
+app.get('/profile', isLoggedIn, async(req , res) => {
   const userProfile = req.user;
   const profilePicture = userProfile.photos[0].value;
   console.log(profilePicture)
