@@ -30,6 +30,7 @@ GOOGLE_CLIENT_SECRET= Firebase Client Secret
 EXPRESS_SECRET= Express Session Secret
 OPENAI_API_KEY= Open AI API Key
 MONGO_DB_URL= Mongo DB URI
+```env
 
 ## App Overview
 
