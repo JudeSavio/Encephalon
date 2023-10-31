@@ -6,6 +6,8 @@ Encephalon is a virtual consultation engine developed with the motivation to act
 
 ![Encephalon Homepage](./public/assets/img/homepage.png)
 
+# Demo : [link](https://www.youtube.com/watch?v=zSmOumSFdG8)
+
 ## App Overview
 
 Encephalon is designed to provide a user-friendly and intuitive interface for students seeking support for their mental health and well-being. The app offers the following functionality:
