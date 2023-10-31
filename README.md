@@ -6,7 +6,7 @@ Encephalon is a virtual consultation engine developed with the motivation to act
 
 ![Encephalon Homepage](./public/assets/img/homepage.png)
 
-# Demo : [link](https://www.youtube.com/watch?v=zSmOumSFdG8)
+### Demo : [link](https://www.youtube.com/watch?v=zSmOumSFdG8)
 
 ## App Overview
 
