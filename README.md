@@ -1,4 +1,4 @@
-# Encephalon - Virtual Consultation Engine
+# Encephalon - A Virtual Consultation Engine
 
 Encephalon is a virtual consultation engine developed with the motivation to act as a first form of contact for students who feel like they are under too much pressure, stress, anxiety, or feel like their mental health is being neglected.
 
